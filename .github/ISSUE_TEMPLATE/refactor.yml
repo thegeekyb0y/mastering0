@@ -1,0 +1,60 @@
+name: Refactor / Tech Debt
+description: Propose a code-quality improvement, cleanup, or restructuring
+title: "[Refactor]: "
+labels: ["refactor", "tech-debt"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for cleanup work: splitting files, removing hardcoded
+        values, renaming, restructuring, translations, etc. No behavior
+        change is expected unless noted below.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Current State
+      description: What's wrong with the code today? Link the file(s).
+      placeholder: "e.g. src/app/page.tsx is 856 lines and mixes data, UI, and layout"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: What should the end state look like?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope / Checklist
+      description: Break the work into checkable items.
+      placeholder: |
+        - [ ] Extract sections into components
+        - [ ] Move content into a data module
+        - [ ] Remove arbitrary Tailwind values
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How will the reviewer know this is done correctly?
+      placeholder: |
+        - [ ] `npm run check` passes
+        - [ ] No visual regression
+      render: markdown
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: risk
+    attributes:
+      label: Risk
+      options:
+        - label: This changes visible behavior/output, not just internal structure
